@@ -1,0 +1,66 @@
+﻿@page
+@using RazorPagesRecap.InputModels
+@model RazorPagesRecap.Pages.SurveyModel
+@{
+    ViewData["Title"] = "Survey formulář";
+    var genderItems = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
+        Enum.GetValues(typeof(Gender)));
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <div class="mb-3">
+        <label asp-for="Input.FirstName" class="form-label"></label>
+        <input asp-for="Input.FirstName" class="form-control" />
+        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.LastName" class="form-label"></label>
+        <input asp-for="Input.LastName" class="form-control" />
+        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Email" class="form-label"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input asp-for="Input.Over15" class="form-check-input" />
+        <label asp-for="Input.Over15" class="form-check-label"></label>
+        <span asp-validation-for="Input.Over15" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Residence" class="form-label"></label>
+        <select asp-for="Input.Residence" class="form-select">
+            <option value="Chrastava">Chrastava</option>
+            <option value="Nová ves">Nová ves</option>
+            <option value="Frýdlant">Frýdlant</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Gender" class="form-label"></label>
+        <select asp-for="Input.Gender" asp-items="genderItems" class="form-select"></select>
+        <span asp-validation-for="Input.Gender" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Title" class="form-label"></label>
+        <input asp-for="Input.Title" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.LifeStory" class="form-label"></label>
+        <textarea asp-for="Input.LifeStory" class="form-control"></textarea>
+        <span asp-validation-for="Input.LifeStory" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Potvrdit</button>
+</form>
